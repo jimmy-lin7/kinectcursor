@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectApp", "KinectApp\KinectApp.csproj", "{31D25120-E3A4-478F-BB7F-C61E74FE61A3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D} = {4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Samples.Kinect.WpfViewers", "..\..\KinectWpfViewers\Microsoft.Samples.Kinect.WpfViewers.csproj", "{4DE23893-27E7-423F-9BB6-BA21DAC2C45E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Kinect.Toolkit", "..\..\Microsoft.Kinect.Toolkit\Microsoft.Kinect.Toolkit.csproj", "{C6F9C31B-6130-4443-A5CC-EF0664552ECD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Kinect.Toolkit.Controls", "..\..\Microsoft.Kinect.Toolkit.Controls\Microsoft.Kinect.Toolkit.Controls.csproj", "{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31D25120-E3A4-478F-BB7F-C61E74FE61A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31D25120-E3A4-478F-BB7F-C61E74FE61A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31D25120-E3A4-478F-BB7F-C61E74FE61A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31D25120-E3A4-478F-BB7F-C61E74FE61A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DE23893-27E7-423F-9BB6-BA21DAC2C45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DE23893-27E7-423F-9BB6-BA21DAC2C45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DE23893-27E7-423F-9BB6-BA21DAC2C45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DE23893-27E7-423F-9BB6-BA21DAC2C45E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F9C31B-6130-4443-A5CC-EF0664552ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F9C31B-6130-4443-A5CC-EF0664552ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F9C31B-6130-4443-A5CC-EF0664552ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F9C31B-6130-4443-A5CC-EF0664552ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4508C4D1-85BB-4F3F-9E3B-CC93D231C65D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7DC52BC-8033-407F-BA80-024E70FD135F}
+	EndGlobalSection
+EndGlobal
