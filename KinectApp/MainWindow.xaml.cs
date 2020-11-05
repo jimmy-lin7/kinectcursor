@@ -24,11 +24,15 @@ namespace KinectApp
     public partial class MainWindow : Window
     {
         private readonly KinectSensorChooser sensorChooser = new KinectSensorChooser();
-        private KinectSensorManager kinectSensorManager { get; set; }
+        private KinectSensorManager kinectSensorManager;
 
         private Skeleton[] skeletonData;
 
         private KCursor kCursor;
+
+        private SpeechRecog speechRecog;
+
+        private bool tracking;
 
         public MainWindow()
         {
@@ -43,8 +47,6 @@ namespace KinectApp
 
             var kinectSensorBinding = new Binding("Kinect") { Source = this.sensorChooser };
             BindingOperations.SetBinding(this.kinectSensorManager, KinectSensorManager.KinectSensorProperty, kinectSensorBinding);
-
-            kCursor = new KCursor(ref sensorChooser, kinectSensorManager);
         }
 
         private void KinectSensorChanged(object sender, KinectSensorManagerEventArgs<KinectSensor> e)
@@ -81,11 +83,16 @@ namespace KinectApp
             kinectSensorManager.TransformSmoothParameters = parameters;
             kinectSensorManager.SkeletonStreamEnabled = true;
             kinectSensorManager.SkeletonTrackingMode = SkeletonTrackingMode.Seated;
+            tracking = true;
 
             // Enable Kinect
             kinectSensorManager.KinectSensorEnabled = true;
 
             sensor.AllFramesReady += NewSensor_AllFramesReady;
+
+            kCursor = new KCursor(sensorChooser);
+            speechRecog = new SpeechRecog(this, kinectSensorManager.KinectSensor);
+
         }
 
         private void NewSensor_AllFramesReady(object sender, AllFramesReadyEventArgs e)
@@ -104,7 +111,7 @@ namespace KinectApp
 
                     foreach (Skeleton skeleton in this.skeletonData)
                     {
-                        if (SkeletonTrackingState.Tracked == skeleton.TrackingState)
+                        if (SkeletonTrackingState.Tracked == skeleton.TrackingState && tracking)
                         {
                             kCursor.moveHandCursor(skeleton);
                         }
@@ -152,5 +159,16 @@ namespace KinectApp
             kCursor.setHand(1);
         }
         #endregion
+
+        public bool getTracking()
+        {
+            return tracking;
+        }
+
+        public void setTracking(bool tracking)
+        {
+            this.tracking = tracking;
+            kCursor.setTracking(tracking);
+        }
     }
 }

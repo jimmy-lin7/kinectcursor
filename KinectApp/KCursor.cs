@@ -19,17 +19,20 @@ namespace KinectApp
         private KinectRegion kinectRegion;
         private CoordinateMapper coordMapper;
         private int hand;
+        private bool tracking;
 
-        public KCursor(ref KinectSensorChooser sensorChooser, KinectSensorManager kinectSensorManager)
+        public KCursor(KinectSensorChooser sensorChooser)
         {
-            coordMapper = new CoordinateMapper(kinectSensorManager.KinectSensor);
-
             kinectRegion = new KinectRegion();
             var regionSensorBinding = new Binding("Kinect") { Source = sensorChooser };
             BindingOperations.SetBinding(this.kinectRegion, KinectRegion.KinectSensorProperty, regionSensorBinding);
 
-            kinectRegion.HandPointersUpdated += KinectRegion_HandPointersUpdated;
+            kinectRegion.HandPointersUpdated += HandPointersUpdated;
             this.hand = 1; // Track right hand by default
+
+            coordMapper = new CoordinateMapper(sensorChooser.Kinect);
+
+            this.tracking = true;
         }
 
         public void setHand(int hand)
@@ -51,10 +54,10 @@ namespace KinectApp
             }
         }
 
-        private void KinectRegion_HandPointersUpdated(object sender, EventArgs e)
+        private void HandPointersUpdated(object sender, EventArgs e)
         {
             //Console.WriteLine(kinectRegion.HandPointers.Count);
-            if (kinectRegion.HandPointers.Count < 2) // Ensure there are hands to track
+            if (kinectRegion.HandPointers.Count < 2 || !tracking) // Ensure there are hands to track
             {
                 return;
             }
@@ -116,6 +119,16 @@ namespace KinectApp
             Canvas.SetLeft(element, X);
             Canvas.SetTop(element, Y);
             //Console.WriteLine(point.X + " " + point.Y);
+        }
+
+        public bool getTracking()
+        {
+            return tracking;
+        }
+
+        public void setTracking(bool tracking)
+        {
+            this.tracking = tracking;
         }
 
     }
